@@ -22,6 +22,7 @@ initialImg.src = Object.keys(pictures)
 
 sliderFrame.append(initialImg)
 
+// Set currentImg as first img in pictures obj.
 let currentImg = initialImg.id
 
 // Navigate between images
@@ -63,7 +64,35 @@ sliderContainer.addEventListener('click', (e) => {
             .filter((url) => {
                 return url !== undefined
             })
+    }
+})
 
-        console.log(pictureIdx)
+// Make small slider buttons below slider frame.
+const picturesLength = Object.keys(pictures).length
+const smallSliderBtnContainer = document.querySelector('.small-slider-btns')
+
+for (let i = 0; i < picturesLength; i++) {
+    const sliderSmallBtn = document.createElement('button')
+    sliderSmallBtn.dataset.idx = i
+    sliderSmallBtn.className = 'slide-btn'
+
+    smallSliderBtnContainer.append(sliderSmallBtn)
+}
+
+// Add functionality to small slider btns.
+smallSliderBtnContainer.addEventListener('click', (e) => {
+    if (e.target.tagName === 'BUTTON') {
+        initialImg.src = Object.keys(pictures)
+            .map((key, idx) => {
+                // Multiply 1 here to convert string to number.
+                if (idx === e.target.dataset.idx * 1) {
+                    currentImg = key
+                    initialImg.id = key
+                    return pictures[key]
+                }
+            })
+            .filter((url) => {
+                return url !== undefined
+            })
     }
 })
