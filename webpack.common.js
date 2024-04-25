@@ -1,5 +1,5 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     entry: './src/index.js',
@@ -11,14 +11,14 @@ module.exports = {
     },
     devServer: {
         static: {
-            directory: path.resolve(__dirname, 'dist')
+            directory: path.resolve(__dirname, 'dist'),
         },
         port: 3000,
         open: true,
         hot: true,
         compress: true,
         historyApiFallback: true,
-        watchFiles: ["src/template.html"],
+        watchFiles: ['src/template.html'],
     },
     module: {
         rules: [
@@ -29,16 +29,16 @@ module.exports = {
             {
                 test: /\.webp$/,
                 type: 'asset/resource',
-                use: ['webp-loader']
+                use: ['webp-loader'],
             },
             {
                 test: /\.(woff|woff2|eot|tff|otf)$/i,
-                type: 'asset/resource'
+                type: 'asset/resource',
             },
             {
                 test: /\.html$/i,
-                loader: 'html-loader' 
-            }
+                loader: 'html-loader',
+            },
         ],
     },
     plugins: [
@@ -47,4 +47,4 @@ module.exports = {
             template: './src/template.html',
         }),
     ],
-};
+}
