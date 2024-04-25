@@ -39,9 +39,9 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: '',
+            title: 'image-carousel',
             filename: 'index.html',
-            template: 'src/template.html',
+            template: './src/template.html',
         }),
     ],
 };
