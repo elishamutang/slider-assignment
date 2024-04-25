@@ -11,19 +11,55 @@ html {
 body {
     min-height: 100vh;
     padding: 0.1px; /* Prevent margin collapsing */
+    background-color: lightcyan;
 }
 
 .slider-container {
-    border: 3px solid red;
+    border: 1px solid black;
+    background-color: lightcyan;
     width: 100%;
     height: 400px;
     margin: 0 auto;
     margin-top: 200px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .slider-frame {
-    border: 3px solid black;
-    width: 800px;
+    border: 3px solid red;
+    width: 600px;
     height: 100%;
-    margin: 0 auto;
+
+    display: flex;
+    overflow: hidden;
+}
+
+img {
+    min-width: 100%;
+    height: 100%;
+}
+
+.nav-btns {
+    border: 1px solid red;
+    border-radius: 5px;
+    background-color: pink;
+    transition: 0.2s;
+}
+
+button {
+    width: 50px;
+    height: 30px;
+    font-size: 16px;
+    padding: 5px;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-btns:hover {
+    scale: 1.1;
 }
