@@ -32,41 +32,57 @@ sliderContainer.addEventListener('click', (e) => {
     
     if(e.target.tagName === 'BUTTON') {
 
+        let [pictureIdx] = Object.keys(pictures).map((key, idx) => {
+
+            if(key === currentImg) {
+                return idx;
+            }
+
+        }).filter((index) => {
+            return index !== undefined;
+        });
+
         if(e.target.textContent === 'Right') {
 
-            let pictureIdx = Object.keys(pictures).map((key, idx) => {
+            if(pictureIdx === Object.keys(pictures).length - 1) {
 
-                if(key === currentImg) {
-                    return idx;
-                }
+                pictureIdx = 0;
 
-            }).filter((index) => {
-                return index !== undefined;
-            });
+            } else {
 
-            pictureIdx++
-
-            initialImg.src = Object.keys(pictures).map((key, idx) => {
-
-                if(idx === pictureIdx) {
-                    currentImg = key;
-                    initialImg.id = key;
-                    return pictures[key];
-                }
-
-            }).filter((url) => {
-                return url !== undefined;
-            })
-
-            console.log(pictureIdx);
+                pictureIdx++
+                
+            }
 
         } else {
 
+            if(pictureIdx === 0) {
+
+                pictureIdx--
+                pictureIdx = Object.keys(pictures).length - 1;
 
 
+            } else {
+
+                pictureIdx--
+
+            }
 
         }
 
+        initialImg.src = Object.keys(pictures).map((key, idx) => {
+
+            if(idx === pictureIdx) {
+                currentImg = key;
+                initialImg.id = key;
+                return pictures[key];
+            }
+
+        }).filter((url) => {
+            return url !== undefined;
+        })
+
+        console.log(pictureIdx);
         
     }
 
