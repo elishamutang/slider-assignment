@@ -24,7 +24,7 @@ module.exports = {
         rules: [
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                type: 'asset/resource'
+                type: 'asset/resource',
             },
             {
                 test: /\.webp$/,
@@ -35,11 +35,14 @@ module.exports = {
                 test: /\.(woff|woff2|eot|tff|otf)$/i,
                 type: 'asset/resource'
             },
+            {
+                test: /\.html$/i,
+                loader: 'html-loader' 
+            }
         ],
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'image-carousel',
             filename: 'index.html',
             template: './src/template.html',
         }),
