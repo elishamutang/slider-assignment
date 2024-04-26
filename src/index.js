@@ -64,6 +64,18 @@ sliderContainer.addEventListener('click', (e) => {
             .filter((url) => {
                 return url !== undefined
             })
+
+        const sliderBtns = Array.from(
+            document.getElementsByClassName('slide-btn')
+        )
+
+        sliderBtns.forEach((btn) => {
+            if (btn.dataset.idx * 1 === pictureIdx) {
+                btn.className += ' selected'
+            } else {
+                btn.className = 'slide-btn'
+            }
+        })
     }
 })
 
@@ -86,8 +98,6 @@ smallSliderBtnContainer.addEventListener('click', (e) => {
             .map((key, idx) => {
                 // Multiply 1 here to convert string to number.
                 if (idx === e.target.dataset.idx * 1) {
-                    const lastImg = currentImg
-
                     currentImg = key
                     initialImg.id = key
 
@@ -102,16 +112,14 @@ smallSliderBtnContainer.addEventListener('click', (e) => {
                 return url !== undefined
             })
 
-        let smallSliderBtns = Array.from(
+        const smallSliderBtns = Array.from(
             document.getElementsByClassName('slide-btn')
         )
 
-        smallSliderBtns = smallSliderBtns
-            .filter((btn) => {
-                return btn !== e.target
-            })
-            .map((btn) => {
+        smallSliderBtns.forEach((btn) => {
+            if (btn !== e.target) {
                 btn.className = 'slide-btn'
-            })
+            }
+        })
     }
 })
