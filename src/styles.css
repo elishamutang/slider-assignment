@@ -91,3 +91,8 @@ button {
 .slide-btn:hover {
     opacity: 1;
 }
+
+.selected {
+    opacity: 1;
+    background-color: lightcoral;
+}

@@ -86,13 +86,32 @@ smallSliderBtnContainer.addEventListener('click', (e) => {
             .map((key, idx) => {
                 // Multiply 1 here to convert string to number.
                 if (idx === e.target.dataset.idx * 1) {
+                    const lastImg = currentImg
+
                     currentImg = key
                     initialImg.id = key
+
+                    if (!Array.from(e.target.classList).includes('selected')) {
+                        e.target.className += ' selected'
+                    }
+
                     return pictures[key]
                 }
             })
             .filter((url) => {
                 return url !== undefined
+            })
+
+        let smallSliderBtns = Array.from(
+            document.getElementsByClassName('slide-btn')
+        )
+
+        smallSliderBtns = smallSliderBtns
+            .filter((btn) => {
+                return btn !== e.target
+            })
+            .map((btn) => {
+                btn.className = 'slide-btn'
             })
     }
 })
