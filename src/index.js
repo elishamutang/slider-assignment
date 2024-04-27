@@ -3,6 +3,9 @@ import pictures from './images'
 
 const sliderContainer = document.querySelector('.slider-container')
 const sliderFrame = document.querySelector('.slider-frame')
+const getSmallSliderBtns = () => {
+    return Array.from(document.getElementsByClassName('slide-btn'))
+}
 
 // Append first img.
 const initialImg = document.createElement('img')
@@ -65,11 +68,9 @@ sliderContainer.addEventListener('click', (e) => {
                 return url !== undefined
             })
 
-        const sliderBtns = Array.from(
-            document.getElementsByClassName('slide-btn')
-        )
+        const smallSliderBtns = getSmallSliderBtns()
 
-        sliderBtns.forEach((btn) => {
+        smallSliderBtns.forEach((btn) => {
             if (btn.dataset.idx * 1 === pictureIdx) {
                 btn.className += ' selected'
             } else {
@@ -112,9 +113,7 @@ smallSliderBtnContainer.addEventListener('click', (e) => {
                 return url !== undefined
             })
 
-        const smallSliderBtns = Array.from(
-            document.getElementsByClassName('slide-btn')
-        )
+        const smallSliderBtns = getSmallSliderBtns()
 
         smallSliderBtns.forEach((btn) => {
             if (btn !== e.target) {
